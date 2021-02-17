@@ -1,4 +1,3 @@
-![Logo](CircadianDesktops/Icons/logo.png)
 # CIRCADIAN DESKTOPS
 ### Video Demo:  <URL HERE>
 TODO
