@@ -1,4 +1,4 @@
-[Logo](CircadianDesktops/Icons/logo.png)
+![Logo](CircadianDesktops/Icons/logo.png)
 # CIRCADIAN DESKTOPS
 ### Video Demo:  <URL HERE>
 TODO
@@ -6,7 +6,7 @@ TODO
 ### Description:
 Circadian Desktops is a Python app for Windows 10 that changes your desktop background based on time of day.
 
-[alt text](Screenshot.png)
+![Screenshot](Screenshot.png)
 
 #### Desktop Images
 Allows users to select different image files to use as desktop background during dawn, day, dust and night.
@@ -15,8 +15,8 @@ A single image can be selected for each period or the app can be set to shuffle 
 #### Transition Times
 The app determines image transition times based on sunrise and sunset times at the users location.
 This is calculated using two non-standard library Python modules:
-- geocoder - Retrieves the users location and timezone using their IP address.
-- astral - calculates sunrise and sunset times based on user location and the current date.
+- Geocoder - Retrieves the users location and timezone using their IP address.
+- Astral - calculates sunrise and sunset times based on user location and the current date.
 
 Alternatively, the user can select their own times for images to transition.
 
