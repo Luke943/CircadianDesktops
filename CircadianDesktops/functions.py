@@ -1,3 +1,8 @@
+"""
+Helper functions called by app.py.
+Deals with getting information and making changes outside the GUI.
+"""
+
 import ctypes
 import datetime
 import os
@@ -99,7 +104,7 @@ def run_on_startup(isRunOnStartup: bool):
         if hasattr(sys, "frozen"):
             regString = f'"{os.path.abspath(os.path.basename(sys.executable))}" /noshow'
         else:
-            # Use of os.path.basename accounts for having cd'd into __main__ directory
+            # Use os.path.basename as app has cd'd into __main__ directory
             mainAbsPath = os.path.abspath(
                 os.path.basename(sys.modules['__main__'].__file__))
             regString = f'"{sys.executable}" "{mainAbsPath}" /noshow'
@@ -110,5 +115,6 @@ def run_on_startup(isRunOnStartup: bool):
             winreg.DeleteValue(key, appname)
 
 
-def explicit_app():
+def set_process_explicit():
+    # Tell Windows to treat app as it's own process so custom icons are used.
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(appname)

@@ -1,6 +1,7 @@
 """
 Main script for Circadian Desktops app.
 Settings file and logo images are stored locally.
+Contains MainWindow class and script to run app.
 """
 import os
 import sys
@@ -252,5 +253,5 @@ if __name__ == "__main__":
         ui.show()
     app.setWindowIcon(QtGui.QIcon(logoFile))
     ui.setWindowIcon(QtGui.QIcon(logoFile))
-    functions.explicit_app()    # So Windows uses logo icon
+    functions.set_process_explicit()    # So Windows uses logo icon
     sys.exit(app.exec_())
