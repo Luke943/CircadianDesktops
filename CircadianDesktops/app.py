@@ -210,6 +210,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.settings['minimizeToTray'] = 0
 
     def show_window(self):
+        functions.set_background_priority(False)
         getattr(self, "raise")()
         self.activateWindow()
         self.setWindowState(QtCore.Qt.WindowNoState)
@@ -238,6 +239,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             event.ignore()
             self.hide()
+            functions.set_background_priority(True)
 
     def __icon_activated(self, reason):
         if reason == QtWidgets.QSystemTrayIcon.DoubleClick or reason == QtWidgets.QSystemTrayIcon.Trigger:
@@ -246,12 +248,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))    # To pick up settings & images
+    functions.set_process_explicit()    # So Windows uses logo icon
     app = QtWidgets.QApplication([])
     ui = MainWindow(settings=settingsFile)
     app.setStyle('fusion')
-    if '/noshow' not in sys.argv:
+    if '/noshow' in sys.argv:
+        functions.set_background_priority(True)
+    else:
         ui.show()
     app.setWindowIcon(QtGui.QIcon(logoFile))
     ui.setWindowIcon(QtGui.QIcon(logoFile))
-    functions.set_process_explicit()    # So Windows uses logo icon
     sys.exit(app.exec_())

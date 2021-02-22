@@ -118,3 +118,19 @@ def run_on_startup(isRunOnStartup: bool):
 def set_process_explicit():
     # Tell Windows to treat app as it's own process so custom icons are used.
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(appname)
+
+
+def set_background_priority(isBackground: bool):
+    """Start or stop process as background prioity to ensure app does not interfer with performance"""
+    processID = os.getpid()
+    processHandle = ctypes.windll.kernel32.OpenProcess(ctypes.c_uint(
+        0x0200 | 0x0400), ctypes.c_bool(False), ctypes.c_uint(processID))
+    if isBackground:
+        # PROCESS_MODE_BACKGROUND_BEGIN = 0x00100000
+        processMode = 0x00100000
+    else:
+        # PROCESS_MODE_BACKGROUND_END = 0x00200000
+        processMode = 0x00200000
+    ctypes.windll.kernel32.SetPriorityClass(
+        processHandle, ctypes.c_uint(processMode))
+    ctypes.windll.kernel32.CloseHandle(processHandle)
