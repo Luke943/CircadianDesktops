@@ -25,7 +25,7 @@ The app offers three additional options:
 - Run on startup - The app to run in the background when the computer is started.
 
 ## App files
-- app.py - Main script to run the app. Contains the MainWindow class and script to call start app.
+- app.py - Main script to run the app. Contains the MainWindow class and script to start app.
 - functions.py - Helper functions called by app.py. Handles functionality outside the GUI.
 - ui_mainwindow.py - Python script generated from destopUi.ui by pyuic5. Used as GUI layout for MainWindow in app.py.
 - custom_qt.py - Contains a custom QtPalette class for 'dark theme'.
