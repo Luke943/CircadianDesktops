@@ -1,5 +1,4 @@
 # CIRCADIAN DESKTOPS
-[comment]: # (## Video Demo:  <URL HERE> TODO)
 
 ## Description
 Circadian Desktops is a Python app for Windows 10 that changes your desktop background based on time of day.
