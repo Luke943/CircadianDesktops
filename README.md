@@ -32,6 +32,8 @@ The app offers three additional options:
 - Icons folder - Image files used in GUI and for Windows system icons.
 
 ## Pyinstaller note
-An executible version of the app has been successfully tested with Pyinstaller using the command:
+An executible version of the app has been successfully tested with Pyinstaller. From this directory use:
+```
 pyinstaller CircadianDesktops/app.py --name 'Circadian Desktops' --noconsole --icon CircadianDesktops/Icons/logo.ico
+```
 However, the Icons folder is not captured and needs to be manually copied into the directory of the .exe file created.
