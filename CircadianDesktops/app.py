@@ -248,7 +248,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(os.path.abspath(__file__)))    # To pick up settings & images
-    functions.set_process_explicit()    # So Windows uses logo icon
+    #if not hasattr(sys, "frozen"):
+        #functions.set_process_explicit()    # So Windows uses logo icon when run from Python
     app = QtWidgets.QApplication([])
     ui = MainWindow(settings=settingsFile)
     app.setStyle('fusion')
