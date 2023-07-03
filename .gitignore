@@ -3,4 +3,4 @@ __pycache__
 *.spec
 build/
 dist/
-settings.txt
+settings.*
