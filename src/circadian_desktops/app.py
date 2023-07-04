@@ -258,6 +258,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 def run_app():
+    """
+    Main function for launching the app
+    """
     os.chdir(os.path.dirname(os.path.abspath(__file__)))  # To pick up settings & images
     functions.set_process_explicit()  # So Windows uses logo icon
     app = QtWidgets.QApplication([])

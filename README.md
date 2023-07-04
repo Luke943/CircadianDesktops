@@ -27,6 +27,10 @@ The app offers three additional options:
 - Minimize to tray - When selected the app will minimize to the system tray and continue running, instead of shutting down when the window in closed.
 - Run on startup - The app to run in the background when the computer is started.
 
+## Installation
+
+*** TODO ***
+
 ## Usage
 
 It is recommended to use Circadian Desktops with `pythonw.exe` to avoid having a command prompt permenantly hanging.

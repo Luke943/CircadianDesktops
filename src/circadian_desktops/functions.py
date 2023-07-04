@@ -74,7 +74,7 @@ def get_settings(filePath: str):
 
 def write_settings(filePath: str, settings: dict):
     with open(filePath, "w") as f:
-        json.dump(settings, f)
+        json.dump(settings, f, indent=2)
 
 
 def random_image(fullPath: str):
@@ -107,7 +107,7 @@ def run_on_startup(isRunOnStartup: bool):
             mainAbsPath = os.path.abspath(
                 os.path.basename(sys.modules["__main__"].__file__)
             )
-            regString = f'"{sys.executable}" "{mainAbsPath}" /noshow'
+            regString = f'"{sys.executable}" -m "{mainAbsPath}" /noshow'
         with winreg.OpenKey(
             winreg.HKEY_CURRENT_USER, sub_key, 0, winreg.KEY_WRITE
         ) as key:
