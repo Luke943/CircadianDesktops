@@ -8,9 +8,9 @@ import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-import circadian_desktops.custom_qt as custom_qt
-import circadian_desktops.functions as functions
-from circadian_desktops.ui_mainwindow import Ui_MainWindow
+import custom_qt
+import functions
+from ui_mainwindow import Ui_MainWindow
 
 settingsFile = "settings.json"
 logoFile = "Icons\\logo.png"
@@ -257,7 +257,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.show_window()
 
 
-def run_app():
+def main():
     """
     Main function for launching the app
     """
@@ -275,6 +275,5 @@ def run_app():
     sys.exit(app.exec_())
 
 
-if __name__ == "__main__":
-    run_app()
-
+if __name__ == '__main__':
+    main()
