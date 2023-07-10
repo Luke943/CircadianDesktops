@@ -26,23 +26,28 @@ The app offers three additional options:
 
 ## Installation
 
-*** TODO - plan to upload to PyPI ***
+To install Circadian Desktops as a library module from PyPI:
+```
+python -m pip install circadian_desktops
+```
+Alternatively, copy the contents of the `src/circadian_desktops` directory.
 
 ## Usage
 
-It is recommended to use Circadian Desktops with `pythonw.exe` to avoid having a command prompt permenantly hanging. With Circadian Desktops installed in Python's library packages, or from its parent directory, run:
+With Circadian Desktops installed in Python's library packages, run:
 ```
-pythonw circadian_desktops
+python -m circadian_desktops
 ```
 
-Alternatively, use a reference to its location such as:
+Alternatively, provide a reference to its location (without the `-m` flag):
 ```
-pythonw C:\example\path\to\app\circadian_desktops
+python C:\example\path\to\app\circadian_desktops
 ```
 
 ## App files
 
 The circadian_desktops directory contains:
+- `__init__.py` - Empty file to identify module.
 - `__main__.py` - Entry point to run module as a script.
 - `app.py` - Primary script to run the app. Contains the MainWindow class and script to start app.
 - `functions.py` - Helper functions called by app.py. Handles functionality outside the GUI.
