@@ -1,8 +1,14 @@
 """
 To run circadian_desktops library module as a script, execute:
-pythonw circadian_desktops
+pythonw -m circadian_desktops
+Alternatively, execute:
+pythonw C:\\path\\to\\folder\\circadian_desktops
 """
 
-import app
+import os
+import subprocess
+import sys
 
-app.main()
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+subprocess.run([sys.executable, "app.py"])
+sys.exit(0)
