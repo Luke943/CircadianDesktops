@@ -8,9 +8,9 @@ import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-import custom_qt
-import functions
-from ui_mainwindow import Ui_MainWindow
+import circadian_desktops.custom_qt as custom_qt
+import circadian_desktops.functions as functions
+from circadian_desktops.ui_mainwindow import Ui_MainWindow
 
 settingsFile = "settings.json"
 logoFile = "Icons\\logo.png"

@@ -34,14 +34,14 @@ Alternatively, copy the contents of the `src/circadian_desktops` directory.
 
 ## Usage
 
-With Circadian Desktops installed in Python's library packages, run:
+It is recommended to run Circadian Desktops with `pythonw.exe` to avoid having a command prompt hanging. With Circadian Desktops installed in Python's library packages, run:
 ```
-python -m circadian_desktops
+pythonw -m circadian_desktops
 ```
 
 Alternatively, provide a reference to its location (without the `-m` flag):
 ```
-python C:\example\path\to\app\circadian_desktops
+pythonw C:\example\path\to\app\circadian_desktops
 ```
 
 ## App files
