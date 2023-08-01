@@ -5,9 +5,6 @@ build-backend = "hatchling.build"
 [project]
 name = "circadian_desktops"
 version = "0.1.0"
-authors = [
-  { name="Luke Hartley", email="luke.hartley05@gmail.com" },
-]
 description = "An app that changes your desktop background based on time of day."
 readme = "README.md"
 requires-python = ">=3.8"
