@@ -4,6 +4,8 @@
 
 Circadian Desktops is a Python app for Windows 10 that changes your desktop background based on time of day.
 
+It can be run either as a Python module or built into an executable.
+
 ![Screenshot](screenshot.png)
 
 ### Desktop Images
@@ -24,15 +26,16 @@ The app offers three additional options:
 - Minimize to tray - When selected the app will minimize to the system tray and continue running, instead of shutting down when the window in closed.
 - Run on startup - The app to run in the background when the computer is started.
 
-## Installation
+## Running with Python
 
-To install Circadian Desktops as a library module from PyPI:
+### Installation
+
+Circadian Desktops can be installed as a library module from PyPI:
 ```
 python -m pip install circadian_desktops
 ```
-Alternatively, copy the contents of the `src/circadian_desktops` directory.
 
-## Usage
+### Usage
 
 It is recommended to run Circadian Desktops with `pythonw.exe` to avoid having a command prompt hanging. With Circadian Desktops installed in Python's library packages, run:
 ```
@@ -43,6 +46,18 @@ Alternatively, provide a reference to its location (without the `-m` flag):
 ```
 pythonw C:\example\path\to\app\circadian_desktops
 ```
+
+## Building executable
+
+An executable version of Circadian Desktops can be built from source using [PyInstaller](https://pyinstaller.org/en/stable/).
+
+First, install all dependancies in `requirements.txt`, plus the PyInstaller package. Then from this folder run:
+
+```
+pyinstaller app.spec
+```
+
+This will produce `dist\app` folder containing `Circadian Desktops.exe`.
 
 ## App files
 
