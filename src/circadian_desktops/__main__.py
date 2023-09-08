@@ -7,7 +7,7 @@ pythonw C:\\path\\to\\folder\\circadian_desktops
 
 import os
 
-import circadian_desktops.app
+from . import app
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-circadian_desktops.app.main()
+app.main()

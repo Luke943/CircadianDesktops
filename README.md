@@ -42,11 +42,6 @@ It is recommended to run Circadian Desktops with `pythonw.exe` to avoid having a
 pythonw -m circadian_desktops
 ```
 
-Alternatively, provide a reference to its location (without the `-m` flag):
-```
-pythonw C:\example\path\to\app\circadian_desktops
-```
-
 ## Building executable
 
 An executable version of Circadian Desktops can be built from source using [PyInstaller](https://pyinstaller.org/en/stable/).

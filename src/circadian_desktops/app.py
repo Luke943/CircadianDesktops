@@ -3,14 +3,15 @@ Main script for Circadian Desktops app.
 Settings file and logo images are stored locally.
 Contains MainWindow class and script to run app.
 """
+
 import os
 import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-import circadian_desktops.custom_qt as custom_qt
-import circadian_desktops.functions as functions
-from circadian_desktops.ui_mainwindow import Ui_MainWindow
+from . import custom_qt
+from . import functions
+from .ui_mainwindow import Ui_MainWindow
 
 settingsFile = "settings.json"
 logoFile = "Icons\\logo.png"
@@ -39,6 +40,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         )
         self.comboBox.currentIndexChanged.connect(self.set_background_style)
         self.spinShuffleTime.valueChanged.connect(self.set_shuffle_time)
+
+        self.timeDawn.timeChanged.connect(self.set_desktop)
+        self.timeDay.timeChanged.connect(self.set_desktop)
+        self.timeDusk.timeChanged.connect(self.set_desktop)
+        self.timeNight.timeChanged.connect(self.set_desktop)
 
         self.radioDefaultTimes.clicked.connect(self.default_times)
         self.radioCustomTimes.clicked.connect(self.custom_times)
@@ -104,18 +110,26 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def set_desktop(self):
         now = QtCore.QTime.currentTime()
+        nextChange: QtCore.QTime
         if self.timeDawn.time() < now <= self.timeDay.time():
             imageFile = self.settings["labelDDImg"]
+            nextChange = self.timeDay.time()
         elif self.timeDay.time() < now <= self.timeDusk.time():
             imageFile = self.settings["labelDayImg"]
+            nextChange = self.timeDusk.time()
         elif self.timeDusk.time() < now <= self.timeNight.time():
             imageFile = self.settings["labelDDImg"]
+            nextChange = self.timeNight.time()
         else:
             imageFile = self.settings["labelNightImg"]
+            nextChange = self.timeDawn.time()
         if imageFile != self.activeImage:
             functions.set_desktop(imageFile)
             self.activeImage = imageFile
-        self.mainTimer.start(60000)
+        timeToChange = nextChange.msec() - now.msec() + 10
+        if timeToChange <= 0:
+            timeToChange += 2_073_600  # ms in a day
+        self.mainTimer.start(timeToChange)
 
     def set_background_style(self):
         if self.comboBox.currentText() == "single image":
