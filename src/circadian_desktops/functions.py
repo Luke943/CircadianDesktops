@@ -103,8 +103,7 @@ def run_on_startup(isRunOnStartup: bool):
         if hasattr(sys, "frozen"):
             regString = f'"{os.path.abspath(os.path.basename(sys.executable))}" /noshow'
         else:
-            # Use cwd as app has cd'd into __main__ directory
-            regString = f'"{sys.executable}" "{os.getcwd()}" /noshow'
+            regString = f'"{sys.executable}" "-m circadian_desktops" /noshow'
         with winreg.OpenKey(
             winreg.HKEY_CURRENT_USER, sub_key, 0, winreg.KEY_WRITE
         ) as key:
