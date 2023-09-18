@@ -14,7 +14,7 @@ import winreg
 from astral import LocationInfo, sun
 import geocoder
 
-appname = "CircadianDesktops"
+APP_NAME = "CircadianDesktops"
 
 
 def get_times():
@@ -36,7 +36,7 @@ def get_times():
         }
 
     except:
-        """For when no connection"""
+        # for when no connection
         times = {
             "dawn": datetime.time(hour=5),
             "sunrise": datetime.time(hour=7),
@@ -107,17 +107,17 @@ def run_on_startup(isRunOnStartup: bool):
         with winreg.OpenKey(
             winreg.HKEY_CURRENT_USER, sub_key, 0, winreg.KEY_WRITE
         ) as key:
-            winreg.SetValueEx(key, appname, 0, winreg.REG_SZ, regString)
+            winreg.SetValueEx(key, APP_NAME, 0, winreg.REG_SZ, regString)
     else:
         with winreg.OpenKey(
             winreg.HKEY_CURRENT_USER, sub_key, 0, winreg.KEY_WRITE
         ) as key:
-            winreg.DeleteValue(key, appname)
+            winreg.DeleteValue(key, APP_NAME)
 
 
 def set_process_explicit():
     # Tell Windows to treat app as it's own process so custom icons are used.
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(appname)
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(APP_NAME)
 
 
 def set_background_priority(isBackground: bool):

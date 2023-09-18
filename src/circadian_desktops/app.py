@@ -9,12 +9,12 @@ import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from . import custom_qt
-from . import functions
-from .ui_mainwindow import Ui_MainWindow
+from circadian_desktops import custom_qt
+from circadian_desktops import functions
+from circadian_desktops.ui_mainwindow import Ui_MainWindow
 
-settingsFile = "settings.json"
-logoFile = "Icons\\logo.png"
+SETTINGS_FILE = "settings.json"
+LOGO_FILE = "Icons\\logo.png"
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -23,7 +23,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     Inherits from Ui_MainWindow, which contains the layout of the widgets.
     """
 
-    def __init__(self, parent=None, settings=None):
+    def __init__(self, parent=None, settings=""):
         # setup
         super(MainWindow, self).__init__(parent)
         self.setupUi(self)
@@ -55,7 +55,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         # tray icon
         self.trayIcon = QtWidgets.QSystemTrayIcon()
-        self.trayIcon.setIcon(QtGui.QIcon(logoFile))
+        self.trayIcon.setIcon(QtGui.QIcon(LOGO_FILE))
         self.trayIcon.setToolTip("Circadian Desktops")
         self.trayIcon.activated.connect(self.__icon_activated)
         self.trayIcon.show()
@@ -278,14 +278,14 @@ def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))  # To pick up settings & images
     functions.set_process_explicit()  # So Windows uses logo icon
     app = QtWidgets.QApplication([])
-    ui = MainWindow(settings=settingsFile)
+    ui = MainWindow(settings=SETTINGS_FILE)
     app.setStyle("fusion")
     if "/noshow" in sys.argv:
         functions.set_background_priority(True)
     else:
         ui.show()
-    app.setWindowIcon(QtGui.QIcon(logoFile))
-    ui.setWindowIcon(QtGui.QIcon(logoFile))
+    app.setWindowIcon(QtGui.QIcon(LOGO_FILE))
+    ui.setWindowIcon(QtGui.QIcon(LOGO_FILE))
     sys.exit(app.exec_())
 
 
